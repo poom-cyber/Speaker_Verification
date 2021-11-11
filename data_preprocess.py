@@ -8,9 +8,9 @@ from utils import keyword_spot
 config = get_config()   # get arguments from parser
 
 # downloaded dataset path
-audio_path= r'C:\Users\LG\Documents\DataSets\Vctk\data'                                          # utterance dataset
-clean_path = r'C:\Users\LG\Documents\Deep_learning\speaker_vertification\clean_testset_wav'  # clean dataset
-noisy_path = r'C:\Users\LG\Documents\Deep_learning\speaker_vertification\noisy_testset_wav'  # noisy dataset
+audio_path= r'F:\Work\SpeakVerification\Our_DataSet\Recording'    # utterance dataset
+clean_path = r'F:\Work\SpeakVerification\data_set\our_testset1'  # clean dataset
+noisy_path = r'F:\Work\SpeakVerification\data_set\our_testset2'  # noisy dataset
 
 
 def extract_noise():
@@ -20,6 +20,7 @@ def extract_noise():
     print("start noise extraction!")
     os.makedirs(config.noise_path, exist_ok=True)              # make folder to save noise file
     total = len(os.listdir(clean_path))                        # total length of audio files
+    print(total)
     batch_frames = config.N * config.M * config.tdsv_frame     # TD-SV frame number of each batch
     stacked_noise = []
     stacked_len = 0
@@ -138,7 +139,6 @@ def save_spectrogram_tisv():
 
 
 if __name__ == "__main__":
-    extract_noise()
     if config.tdsv:
         save_spectrogram_tdsv()
     else:

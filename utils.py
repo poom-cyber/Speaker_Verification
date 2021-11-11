@@ -74,14 +74,14 @@ def random_batch(speaker_num=config.N, utter_num=config.M, shuffle=True, noise_f
         utter_batch = []
         for file in selected_files:
             utters = np.load(os.path.join(path, file))        # load utterance spectrogram of selected speaker
-            if shuffle:
+            if shuffle: 
                 utter_index = np.random.randint(0, utters.shape[0], utter_num)   # select M utterances per speaker
                 utter_batch.append(utters[utter_index])       # each speakers utterance [M, n_mels, frames] is appended
             else:
                 utter_batch.append(utters[utter_start: utter_start+utter_num])
 
         utter_batch = np.concatenate(utter_batch, axis=0)     # utterance batch [batch(NM), n_mels, frames]
-
+        print("Array 84",utter_batch)
         if config.train:
             frame_slice = np.random.randint(140,181)          # for train session, random slicing of input batch
             utter_batch = utter_batch[:,:,:frame_slice]

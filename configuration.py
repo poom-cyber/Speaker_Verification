@@ -44,8 +44,8 @@ model_arg.add_argument('--model_num', type=int, default=6, help="number of ckpt 
 # Training Parameters
 train_arg = parser.add_argument_group('Training')
 train_arg.add_argument('--train', type=str2bool, default=False, help="train session or not(test session)")
-train_arg.add_argument('--N', type=int, default=4, help="number of speakers of batch")
-train_arg.add_argument('--M', type=int, default=5, help="number of utterances per speaker")
+train_arg.add_argument('--N', type=int, default=9, help="number of speakers of batch")
+train_arg.add_argument('--M', type=int, default=10, help="number of utterances per speaker")
 train_arg.add_argument('--noise_filenum', type=int, default=16, help="how many noise files will you use")
 train_arg.add_argument('--loss', type=str, default='softmax', help="loss type (softmax or contrast)")
 train_arg.add_argument('--optim', type=str.lower, default='sgd', help="optimizer type")
