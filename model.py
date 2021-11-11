@@ -133,8 +133,11 @@ def test(path):
             S = sess.run(similarity_matrix, feed_dict={enroll:random_batch(shuffle=False, noise_filenum=1),
                                                        verif:random_batch(shuffle=False, noise_filenum=2)})
         else:
+            ## stuck here!!
             S = sess.run(similarity_matrix, feed_dict={enroll:random_batch(shuffle=False),
-                                                       verif:random_batch(shuffle=False, utter_start=config.M)})
+                                                       verif:random_batch(shuffle=False, utter_start=2)})
+            print("in tisvv")
+        print("reshape")
         S = S.reshape([config.N, config.M, -1])
         time2 = time.time()
 
